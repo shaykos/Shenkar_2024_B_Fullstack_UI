@@ -15,7 +15,7 @@ q1_btn?.addEventListener('click', () => {
 
 
 document.querySelector<HTMLButtonElement>('#btn_convert')?.addEventListener('click', () => {
-  let num = Math.floor(Math.random() * 100) + 1; // Math.floor(Math.random() * (max - min + 1)) + min;
+  let num = Math.floor(Math.random() * 100) + 1; //Math.floor(Math.random() * (max - min + 1)) + min;
   let p = document.querySelector('#binary_res') as HTMLParagraphElement;
   p.innerHTML = ToBinary(num);
 });

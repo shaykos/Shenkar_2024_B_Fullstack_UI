@@ -32,5 +32,5 @@ export function ToBinary(num: number):string{
         }
         num = Math.floor(num / 2);
     }
-    return `${n} => ${bin}`;
+    return `${n} in binary is ${bin}`;
 }
