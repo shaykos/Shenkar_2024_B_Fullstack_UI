@@ -1,0 +1,20 @@
+ul{
+    list-style: none;
+    padding:0;
+    display: grid;
+    text-align: center;
+    gap:20px;
+}
+
+img{
+    max-width: 100%;
+}
+
+.movies-list ul{
+    grid-template-columns: 1fr 1fr;
+}
+
+.top-movies ul{
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
