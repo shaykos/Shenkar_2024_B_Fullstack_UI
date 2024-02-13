@@ -39,6 +39,7 @@ export default function Gallery() {
             <h1>Gallery</h1>
             <div style={{ width: '100%', height: '300px', backgroundImage: `url(${imgSrc})` }}></div>
             <Button variant="outline-primary" onClick={() => setClicks(clicks + 1)}>Ouch</Button>
+         
             {/* <button >Ouch :/ ({clicks})</button> */}
         </>
     )
