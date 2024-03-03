@@ -1,4 +1,4 @@
-import App from "../../src/App";
+import App from "../../src/pages/App";
 
 describe('Simple App Test', () => {
   beforeEach(() => {
