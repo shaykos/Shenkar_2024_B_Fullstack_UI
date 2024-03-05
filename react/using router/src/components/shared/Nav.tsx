@@ -14,6 +14,9 @@ export default function Nav() {
                     <li>
                         <Link to="/store">Store</Link>
                     </li>
+                    <li>
+                        <Link to="/admin">Admin</Link>
+                    </li>
                 </ul>
             </nav>
         </>
