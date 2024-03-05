@@ -2,6 +2,35 @@ import { Data, Input } from "./types/dataTypes";
 
 declare const brain: any;
 
+function normalizeData(trainingData: Array<Data>): Array<Data> {
+
+    //temp -> 50% --> 0.5
+    //humidity -> 30% --> 0.3
+    //wind -> 20% --> 0.2
+    // { input: { temperature: 25, humidity: 60, wind: 10 }, output: { goForRun: 1 } },
+    trainingData.forEach((data) => {
+        data.input.temperature = data.input.temperature * 0.5
+        data.input.humidity = data.input.humidity * 0.3
+        data.input.wind = data.input.wind * 0.2
+    });
+
+    return trainingData
+}
+
+function normalizeInput(input: Input): Input {
+
+    //temp -> 50% --> 0.5
+    //humidity -> 30% --> 0.3
+    //wind -> 20% --> 0.2
+    // { input: { temperature: 25, humidity: 60, wind: 10 }, output: { goForRun: 1 } },
+
+    input.temperature = input.temperature * 0.5
+    input.humidity = input.humidity * 0.3
+    input.wind = input.wind * 0.2
+
+    return input;
+}
+
 export function createNN() {
     // Create a new neural network
     const net = new brain.NeuralNetwork({
@@ -49,31 +78,3 @@ export function createNN() {
 
 }
 
-function normalizeData(trainingData: Array<Data>): Array<Data> {
-
-    //temp -> 50% --> 0.5
-    //humidity -> 30% --> 0.3
-    //wind -> 20% --> 0.2
-    // { input: { temperature: 25, humidity: 60, wind: 10 }, output: { goForRun: 1 } },
-    trainingData.forEach((data) => {
-        data.input.temperature = data.input.temperature * 0.5
-        data.input.humidity = data.input.humidity * 0.3
-        data.input.wind = data.input.wind * 0.2
-    });
-
-    return trainingData
-}
-
-function normalizeInput(input: Input): Input {
-
-    //temp -> 50% --> 0.5
-    //humidity -> 30% --> 0.3
-    //wind -> 20% --> 0.2
-    // { input: { temperature: 25, humidity: 60, wind: 10 }, output: { goForRun: 1 } },
-
-    input.temperature = input.temperature * 0.5
-    input.humidity = input.humidity * 0.3
-    input.wind = input.wind * 0.2
-
-    return input;
-}
