@@ -10,7 +10,6 @@ let net = new brain.NeuralNetwork();
 let data = [
   { input: { team1: 1, team2: 1 }, output: { team1: 1, team2: 0 } }, // team 1 wins 
   { input: { team1: 1, team3: 1 }, output: { team1: 0, team3: 1 } } // team 3 wins
-
 ]
 
 //אימון המכונה
