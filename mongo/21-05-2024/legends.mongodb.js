@@ -49,12 +49,50 @@ db.unicorns.find(
     {
         gender: 'f',
         $or: [
-            { loves: 'apple'},
-            { weight: {$lt: 500}}
+            { loves: 'apple' },
+            { weight: { $lt: 500 } }
         ]
     }
 );
 
 //להציג כמה בנות יש
 use('legends');
-db.unicorns.find({gender:'f'}).count();
+db.unicorns.find({ gender: 'f' }).count();
+
+//להציג כמה חדי קרן יש
+use('legends');
+db.unicorns.find().count();
+
+//להציג את כל חדי הקרן שאוהבים שוקולד או אוהבים אבטיח או שוקלים לפחות 600 קג
+use('legends');
+db.unicorns.find({
+    $or: [
+        { weight: { $gte: 600 } },
+        { loves: { $in: ["chocolate", "watermelon"] } }
+    ]
+}).count();
+
+//הצגת כל בנות חדי הקרן שאוהבות לאכול תפוחי עץ או תפוזים או שמשקלן פחות מ-500 קג
+use('legends');
+db.unicorns.find({
+    gender: 'f',
+    $or: [
+        { weight: { $lt: 500 } },
+        { loves: { $in: ["apple", "orange"] } }
+    ]
+}).count();
+//(gender == 'f' && (weight <= 500 || loves.contains("")))
+
+//הצגת כל חדי הקרן לפי משקל בסדר עולה
+use('legends');
+db.unicorns.find().sort({weight: 1});
+
+//הצגת כל חדי הקרן לפי משקל וכמות ערפדים שניצחו בסדר יורד
+use('legends');
+db.unicorns.find().sort({weight: -1, vampires: -1});
+
+//מיהו חד הקרן הקרן הכי רזה? 
+use('legends');
+db.unicorns.find().sort({weight: 1}).limit(1);
+
+
