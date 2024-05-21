@@ -21,3 +21,27 @@ db.customers.find({ age: { $gt: 20 }, status: "A" });
 //כתיב מלא
 use('library');
 db.customers.find({ $and: [{ age: { $gt: 20 }, status: "A" }] });
+
+//יש להציג רשימה של אנשים שלא רשום להם או גיל או סטטוס
+use('library');
+db.customers.find(
+    {
+        $or: [
+            { age: { $exists: false } },
+            { status: { $exists: false } }
+        ]
+    }
+);
+
+//query יש להציג רשימה של אנשים שלא רשום להם או גיל או סטטוס עם משתנה 
+use('library');
+let query = {
+    $or: [
+        { age: { $exists: false } },
+        { status: { $exists: false } }
+    ]
+}
+db.customers.find(query);
+
+use('library');
+db.customers.find({age:{$exists: true}},{status:1, _id:0});
