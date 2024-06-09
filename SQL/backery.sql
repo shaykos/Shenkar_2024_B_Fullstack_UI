@@ -1,5 +1,7 @@
 --יצירת טבלאות
 --identity(1,1) -> מספר רץ. מתחיל ב-1 וקופץ ב-1
+use nodejsSQL;
+
 create table Recipe(
     id int identity(1,1) primary key, 
     [name] nvarchar(250) not null,
@@ -60,8 +62,30 @@ create table EmployeeInShift(
 );
 
 
+insert into Employee(id,first_name,last_name,birthday)
+    values('111111111','Neria', 'Segas', '2000-5-16')
+insert into Employee(id,first_name,last_name,birthday)
+    values('222222222','Yarin', 'Firka', '1999-1-15')
+insert into Employee(id,first_name,last_name,birthday)
+    values('333333333','Denis', 'Tsirlin', '1999-1-10')
+insert into Employee(id,first_name,last_name,birthday)
+    values('444444444','Oranit', 'Gerbi', '1998-12-6')
 
 
+select * from Employee
+go
 
+create proc InsertEmployee 
+    @id char(9),
+    @first_name varchar(255),
+    @last_name varchar(255),
+    @birthday date
+as
+    insert into Employee(id,first_name,last_name,birthday)
+        values(@id,@first_name, @last_name,  @birthday)
+go
 
-
+create proc DeleteEmployees
+as
+    delete from Employee
+go
