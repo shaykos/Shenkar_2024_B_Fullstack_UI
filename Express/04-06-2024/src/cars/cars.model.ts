@@ -16,7 +16,7 @@ export async function getCarsByColor(clr: string): Promise<any> {
 }
 
 export async function add(car: Car) {
-    
+    return new CarsDB().insert(car);
 }
 
 

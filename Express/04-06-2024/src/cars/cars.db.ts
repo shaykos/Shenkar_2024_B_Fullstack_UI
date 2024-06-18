@@ -1,4 +1,5 @@
 import { MongoClient, ObjectId } from 'mongodb';
+import { Car } from './cars.model';
 
 export class CarsDB {
     connection_string: string;
@@ -24,10 +25,10 @@ export class CarsDB {
         }
     }
 
-    async insert(document) {
+    async insert(car: Car) {
         try {
             await this.client.connect();
-            return await this.client.db(this.db_name).collection(this.collection).insertOne(document);
+            return await this.client.db(this.db_name).collection(this.collection).insertOne(car);
         } catch (error) {
             throw error;
         }
