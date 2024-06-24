@@ -6,7 +6,7 @@ const carsRouter = Router();
 carsRouter
     .get('/', getCars)
     .get('/color/:clr', carsByColor)
-    .post('/add', addCar)
+    .post('/', addCar)
 
 export default carsRouter;
 

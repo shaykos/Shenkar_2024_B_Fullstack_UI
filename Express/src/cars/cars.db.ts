@@ -16,7 +16,7 @@ export class CarsDB {
     async findAll(query = {}, project = {}) {
         try {
             await this.client.connect();
-            return await this.client.db(this.db_name).collection(this.collection).find(query).toArray();
+            return await this.client.db(this.db_name).collection(this.collection).find().toArray();
         } catch (error) {
             throw error;
         }
