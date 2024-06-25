@@ -1,6 +1,5 @@
 import { ObjectId } from "mongodb";
 import { findUsers } from "./user.db";
-import { User } from "./user.type";
 
 export async function getAllUsers() {
     return await findUsers();

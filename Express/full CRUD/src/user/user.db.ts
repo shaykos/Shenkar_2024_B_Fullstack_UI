@@ -1,4 +1,3 @@
-import { User } from "./user.type";
 import { MongoClient } from "mongodb";
 
 const DB_INFO = {
@@ -15,13 +14,16 @@ export async function findUsers(query = {}, projection = {}) {
     //מייצר את האובייקט שבאמצעותו נתחבר למסד הנתונים ונבצע שאילתות
     let mongo = new MongoClient(DB_INFO.connection);
     try {
+        //התחברות למסד הנתונים
         await mongo.connect();
+        //ביצוע שאילתה
         let users = await mongo.db(DB_INFO.name).collection(DB_INFO.collection).find(query, { projection }).toArray();
         return users;
     } catch (error) {
         throw error;
     }
     finally {
+        //סגירת החיבור למסד הנתונים
         mongo.close();
     }
 }
