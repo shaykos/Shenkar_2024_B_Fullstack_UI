@@ -1,15 +1,16 @@
 //ייבוא אובייקט 
 import { Router } from 'express';
-import { deleteUser, getAll, getUserById, login, register, updateUser } from './user.controller';
+import { physicDeleteUser, getAll, getUserById, login, register, update, logicDeleteUser } from './user.controller';
 
 const userRoutes = Router();
 
 userRoutes
-    .get('/', getAll)
-    .get('/:id/', getUserById)
-    .post('/login', login)
-    .post('/register', register)
-    .put('/update', updateUser)
-    .delete('/delete/:id', deleteUser)
+    .get('/', getAll) //READ
+    .get('/:id/', getUserById) //READ
+    .post('/login', login) //READ
+    .post('/register', register) //CREATE
+    .put('/update/:id', update) //UPDATE
+    .delete('/logic/delete/:id', logicDeleteUser) //DELETE
+    .delete('/physic/delete/:id', physicDeleteUser) //DELETE
 
 export default userRoutes;
