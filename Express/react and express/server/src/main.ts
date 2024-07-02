@@ -1,5 +1,6 @@
 //אתחול משתני סביבה
 import 'dotenv/config';
+import cors from 'cors';
 
 //ייבוא את האקספרס
 import express from 'express';
@@ -13,6 +14,7 @@ const server = express();
 
 //הגדרת יכולות שונות
 server.use(express.json()); //json עבודה עם 
+server.use(cors()); //רשימת הכתובות שיכולות לגשת לשרת
 
 //שימוש בקבצים סטטיים - בהמשך
 
