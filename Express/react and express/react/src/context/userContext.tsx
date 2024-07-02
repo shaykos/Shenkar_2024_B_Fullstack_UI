@@ -26,6 +26,7 @@ export default function UserContextProvider({ children }: any) {
                 return;
             }
 
+            //json גוף התשובה מוסתר ולכן נמתין להמרה ל 
             let data = await res.json();
 
             console.log('data ==> ', data);
