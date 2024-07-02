@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { getAllUsers, findUserById, loginUser, registerUser, updateUser, deactiveUser, removeUser } from "./user.model";
 import { User } from "./user.type";
+import { decryptPassword, encryptPassword } from "../utils/utils";
 
 export async function getAll(req: Request, res: Response) {
     try {
@@ -36,11 +37,15 @@ export async function login(req: Request, res: Response) {
     if (!email || !password)
         return res.status(400).json({ message: 'invalid email or password' });
     try {
-        let user = await loginUser(email, password);
+        let user = await loginUser(email);
         if (!user)
             res.status(404).json({ message: 'user not found' });
-        else
+        //הפעלת הפונקציה לפענוח הסיסמה
+        else if (decryptPassword(password, user.password))
             res.status(200).json({ user });
+        else
+            res.status(400).json({ message: 'invalid email or password' });
+        
     } catch (error) {
         res.status(500).json({ error });
     }
@@ -52,6 +57,8 @@ export async function register(req: Request, res: Response) {
         return res.status(400).json({ message: 'missing info' });
 
     try {
+        //הפעלת הפונקציה להצפנת הסיסמה
+        password = encryptPassword(password);
         let user: User = { email, password, full_name }
         let result = await registerUser(user);
         if (!result.insertedId)

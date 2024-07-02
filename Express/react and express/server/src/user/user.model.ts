@@ -23,9 +23,9 @@ export async function findUserById(id: string) {
 
 }
 
-export async function loginUser(email: string, password: string) {
+export async function loginUser(email: string) {
     try {
-        let query = { email: email, password: password }
+        let query = { email: email}
         let users = await findUsers(query);
         return users[0];
     } catch (error) {
