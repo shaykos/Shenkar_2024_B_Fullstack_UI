@@ -74,7 +74,7 @@ export async function register(req: Request, res: Response) {
 
 export async function update(req: Request, res: Response) {
     let { id } = req.params;
-    let { email, full_name, grade } = req.body;
+    let { email, full_name, grade, image } = req.body;
 
     if (!id || id.length < 24)
         return res.status(400).json({ message: 'must provide a valid id' });
@@ -83,7 +83,7 @@ export async function update(req: Request, res: Response) {
         return res.status(400).json({ message: 'must provide an email and full_name' });
 
     try {
-        let result = await updateUser(id, email, full_name, grade);
+        let result = await updateUser(id, email, full_name, grade, image);
         res.status(201).json({ result });
     } catch (error) {
         res.status(500).json({ error });

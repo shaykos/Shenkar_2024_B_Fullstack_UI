@@ -5,5 +5,6 @@ export type User = {
     full_name: string,
     password?: string,
     email: string
-    grade?: number
+    grade?: number,
+    image?:string
 } 

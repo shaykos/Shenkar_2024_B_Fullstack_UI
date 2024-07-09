@@ -25,7 +25,7 @@ export async function findUserById(id: string) {
 
 export async function loginUser(email: string) {
     try {
-        let query = { email: email}
+        let query = { email: email }
         let users = await findUsers(query);
         return users[0];
     } catch (error) {
@@ -52,9 +52,9 @@ export async function registerUser(user: User) {
     }
 }
 
-export async function updateUser(id: string, email: string, full_name: string, grade?: number) {
+export async function updateUser(id: string, email: string, full_name: string, grade?: number, image?: string) {
     try {
-        let user: User = { email, full_name, _id: new ObjectId(id), grade: grade }
+        let user: User = { email, full_name, _id: new ObjectId(id), grade: grade, image: image }
         return await updateDoc(user);
     } catch (error) {
         throw error;
