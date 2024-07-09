@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
+import { CloudinaryCompType } from "../types/props.type";
 
-export default function CloudinaryComp({ updateUserImage }: any) {
+export default function CloudinaryComp({ setImage }: CloudinaryCompType) {
   const cloudinaryRef = useRef();
   const widgetRef = useRef();
 
@@ -20,8 +21,8 @@ export default function CloudinaryComp({ updateUserImage }: any) {
 
   function handleWidgetEvents(res: any) {
     if (res.event == "success") {
-      console.log(res.info.secure_url)
-      
+      console.log(res.info.secure_url);
+      setImage(res.info.secure_url);
     }
   }
 

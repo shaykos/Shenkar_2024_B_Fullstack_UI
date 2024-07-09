@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
-import { GET, POST } from "../api";
+import { GET, POST, PUT } from "../api";
+import { UserType } from "../types/props.type";
 
 export const UserContext = createContext({});
 
@@ -18,10 +19,15 @@ export default function UserContextProvider({ children }: any) {
         return await GET('users/');
     }
 
+    async function updateImage(user: UserType) {
+        return await PUT(`users/update/${user._id}`, user);
+    }
+
     const values = {
         user,
         login,
-        getAllUsers
+        getAllUsers,
+        updateImage
     }
 
     return (
